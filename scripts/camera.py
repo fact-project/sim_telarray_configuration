@@ -105,7 +105,7 @@ def main():
 """
 
     trigger_str = ""
-    trigger_str_prefix = "AnalogSumTrigger * of "
+    trigger_str_prefix = "Trigger * of "
     for idx, grp in sim_tel_camera.groupby('trigger_patch_id'):
         trigger_str += trigger_str_prefix
         trigger_str += " ".join(map(str, list(grp.index))) + "\n"
