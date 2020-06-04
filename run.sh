@@ -12,7 +12,8 @@ rm ${OUTPUT_PATH} -f
 
 ${SIMTEL}/sim_telarray \
     -Ibuild -Iconfig \
-    -C plot_file=build/simtel_plot \
+    -C plot_file=build/simtel-plot \
+    -C image_file=build/simtel-image.ps \
     -C telescope_zenith_angle=${ZD} \
     -C telescope_azimuth=${AZ} \
     -c config/FACT.cfg \
