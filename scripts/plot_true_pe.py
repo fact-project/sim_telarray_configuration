@@ -10,19 +10,20 @@ from ctapipe.visualization import mpl_camera
 mpl_camera.PIXEL_EPSILON = 0
 
 
-color = 'afmhot'
 path = 'build/simtel-output.zst'
 
 # just to directly get the cam geom
 subarray = SimTelEventSource(input_url=path).subarray
 geom = subarray.tel[1].camera.geometry
 
-d = CameraDisplay(geom)
-d.axes.figure.show()
-d.add_colorbar()
+fig, ax = plt.subplots()
+
+im_disp = CameraDisplay(geom, ax=ax)
+fig.show()
+im_disp.add_colorbar()
 
 
-for i, e in enumerate(SimTelFile(path).iter_mc_events()):
+for e in SimTelFile(path).iter_mc_events():
 
     true_pe = e['photoelectrons'].get(0)
 
@@ -31,11 +32,12 @@ for i, e in enumerate(SimTelFile(path).iter_mc_events()):
         energy = mc_shower['energy']
         event_id = e['event_id']
         pe = true_pe['photoelectrons']
+        time = np.empty(1440)
+        time[true_pe['pixel_id']] = true_pe['time']
         max_pe = int(np.max(pe))
 
-        d.axes.set_title(f'{event_id}: {energy:.2f} TeV')
-        d.image = pe
-        d.cmap = cm.get_cmap(color, max_pe + 1)
+        im_disp.axes.set_title(f'{event_id}: {energy:.2f} TeV')
+        im_disp.image = pe
 
         if max_pe >= 100 and max_pe < 1000:
             plt.savefig(f"build/true_pe_{max_pe:03d}.png", dpi=500)
