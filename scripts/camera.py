@@ -100,9 +100,7 @@ def main():
         }
     )
 
-    trigger_cmt = """
-# AnalogSumTrigger using all pixels from a single trigger patch:
-"""
+    trigger_cmt = """"""
 
     trigger_str = ""
     trigger_str_prefix = "Trigger * of "
