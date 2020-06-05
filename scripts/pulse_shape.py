@@ -11,8 +11,10 @@ def pulse(x):
 
 
 def main(output_path):
-    x_max = 25
-    x = linspace(0, x_max, x_max * 10 + 1)
+    n_px = 310
+    x_min = -10
+    x_max = 200
+    x = linspace(x_min, x_max, n_px + 1)
 
     df = pd.DataFrame({'x': x, 'pulse': pulse(x)})
 
