@@ -6,25 +6,28 @@ CONFIG = \
 
 all: test
 
-test: build/display-dl1.png build/true_pe.png build/stage1.pdf
+test: build/hillas.pdf
 	pytest
 
 build:
 	mkdir -p build
 
-build/stage1.pdf: scripts/plot_stage1.py build/events.dl1.h5
-	python $<
-
 build/pulse_shape.dat: scripts/pulse_shape.py | build
 	python $<
 
-build/events.dl1.h5: build/simtel-output.zst
-	ctapipe-stage1-process --input=$< --output=$@ --overwrite --write-parameters --write-images
+build/hillas.pdf: scripts/hist_hillas.py build/events.dl1.h5
+	python $<
 
-build/display-dl1.png: build/simtel-output.zst | build
+build/events.dl1.h5: build/simtel-output.zst
+	ctapipe-stage1-process --input=$< --output=$@ --overwrite --write-parameters --write-images --progress
+	mv provenance.log build/
+
+build/display-dl1.pdf: build/simtel-output.zst | build
 	rm -f $@
 	ctapipe-display-dl1 \
 		--input $< \
+		--ImagePlotter.display=False \
+		--max_events=10 \
 		-O $@
 	mv provenance.log build/
 
