@@ -4,10 +4,12 @@ CONFIG = \
 		build/mirror_FACT.dat \
 		build/pulse_shape.dat
 
-all: test
+all: test build/hillas.pdf build/laser_waveforms.png build/waveforms.png build/display-dl1.pdf build/intensity.png
 
-test: build/hillas.pdf
-	pytest
+test: build/pytest.out
+
+build/pytest.out: | build
+	pytest -q | tee $@
 
 build:
 	mkdir -p build
@@ -19,7 +21,13 @@ build/hillas.pdf: scripts/hist_hillas.py build/events.dl1.h5
 	python $<
 
 build/events.dl1.h5: build/simtel-output.zst
-	ctapipe-stage1-process --input=$< --output=$@ --overwrite --write-parameters --write-images --progress
+	ctapipe-stage1-process \
+		--input=$< \
+		--output=$@ \
+		--overwrite \
+		--write-parameters \
+		--write-images \
+		--progress
 	mv provenance.log build/
 
 build/display-dl1.pdf: build/simtel-output.zst | build
@@ -44,6 +52,18 @@ build/mirror_FACT.dat: scripts/convert_mirror.py config/reflector.txt | build
 	python $<
 
 build/camera_FACT.dat: scripts/camera.py | build
+	python $<
+
+build/waveforms.png: scripts/waveforms.py build/simtel-output.zst | build
+	python $<
+
+build/laser_waveforms.png: scripts/laser_waveforms.py build/simtel-output.zst | build
+	python $<
+
+build/pulse_shape.png: scripts/plot_pulse.py build/pulse_shape.dat
+	python $<
+
+build/energy.png: scripts/plot_energy.py build/simtel-output.zst
 	python $<
 
 .PHONY: all clean test
