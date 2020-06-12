@@ -13,7 +13,7 @@ def pulse(x):
 def main(output_path):
     n_px = 310
     x_min = -10
-    x_max = 200
+    x_max = 300
     x = linspace(x_min, x_max, n_px + 1)
 
     df = pd.DataFrame({'x': x, 'pulse': pulse(x)})
