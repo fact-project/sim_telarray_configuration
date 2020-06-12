@@ -64,8 +64,8 @@ def main():
         6: Q(9.5, u.mm).to_value(u.cm),  # funnel diameter (flat-to-flat for hex.) [cm]
         7: Q(20, u.mm).to_value(u.cm),  # depth of funnel [cm]
         # double quotes needed!
-        8: '"cone-angular-acceptance.txt"',  # a) funnel efficiency "filename",   b) funnel plate transparency
-        # 9: 1, # '"cone-angular-acceptance.txt"',  # a) optional wavelength "filename", b) funnel wall reflectivity
+        8: '"cone-angular-acceptance.txt"',
+        9: '"cone-transmission.txt"',
     }
 
     # pixtype_str = 'PixType {} {} {} {} {} {} {} {} {}'.format(*pixtype.values())
@@ -89,14 +89,14 @@ def main():
         {
             "keyword": "Pixel",
             "pix_num": sim_tel_camera.index,
-            "pix_type": 1,  # set pixel type above
+            "pix_type": 1,  # set to pixel type above
             "x_pos": Q(sim_tel_camera["pix_x"], u.m).to_value(u.cm),
             "y_pos": Q(sim_tel_camera["pix_y"], u.m).to_value(u.cm),
             "module_number": sim_tel_camera["trigger_patch_id"],
-            "board_number_in_module": sim_tel_camera["trigger_patch_id"],  # sowas wie patch_id?
+            "board_number_in_module": sim_tel_camera["trigger_patch_id"],
             "channel_number_in_board": 0,
             "board_id_number": sim_tel_camera["trigger_patch_id"],
-            "pixel_on": 1,  # dead pixels?
+            "pixel_on": 1,
         }
     )
 
@@ -104,7 +104,7 @@ def main():
 
     trigger_str = ""
     trigger_str_prefix = "Trigger * of "
-    for idx, grp in sim_tel_camera.groupby('trigger_patch_id'):
+    for idx, grp in sim_tel_camera.groupby("trigger_patch_id"):
         trigger_str += trigger_str_prefix
         trigger_str += " ".join(map(str, list(grp.index))) + "\n"
 
