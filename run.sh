@@ -2,12 +2,13 @@
 
 SIMTEL=../simtel/sim_telarray
 DATA=../data
-DATA_FILE=corsika_*_run_0003****_az01*-0**_zd**-**.eventio.zst
+DATA_FILE=corsika_gamma_run_000*****_az01*-0**_zd**-**.eventio.zst
 OUTPUT_PATH=build/simtel
 
 AZ=155
 ZD=11.5
 
+echo "removing ${OUTPUT_PATH} instead of overwriting"
 rm ${OUTPUT_PATH} -f
 
 ${SIMTEL}/sim_telarray \
@@ -19,6 +20,4 @@ ${SIMTEL}/sim_telarray \
     -o ${OUTPUT_PATH}-output.zst \
     -p ${OUTPUT_PATH}-plots \
     -h ${OUTPUT_PATH}-hist \
-    -i ${DATA}/${DATA_FILE} \
-
-echo "processed ${DATA_FILE}"
+    -i ${DATA}/${DATA_FILE}
