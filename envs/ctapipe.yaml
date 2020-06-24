@@ -1,0 +1,8 @@
+channels:
+    - default
+    - cta-observatory
+dependencies:
+    - ctapipe=0.8.0
+    - pip
+    - pip:
+        - git+https://github.com/nbiederbeck/ctapipe_io_fact@52ccb80
