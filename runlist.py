@@ -3,7 +3,7 @@ import pandas as pd
 input_data_dir = '../data/'
 output_data_dir = 'build/'
 
-corsika_file = (input_data_dir +
+corsika_file = input_data_dir + (
     'Corsika/76900/epos_urqmd_iact_lapalma_winter/'
     '{particle_type}/{runs}/'
     'corsika_{particle_type}_run_{run_id}'
@@ -11,7 +11,7 @@ corsika_file = (input_data_dir +
     '.eventio.zst'
 )
 
-ceres_file = (input_data_dir +
+ceres_file = input_data_dir + (
     'Ceres/r19561/settings_12/epos_urqmd_iact_lapalma_winter/'
     '{particle_type}/{run_type}_{offset}/{runs}/'
     'ceres_{particle_type}_{run_type}_{offset}_run_{run_id}'
@@ -19,7 +19,7 @@ ceres_file = (input_data_dir +
     '_Events.fits.gz'
 )
 
-fact_tools_images = (output_data_dir +
+fact_tools_images = output_data_dir + (
     'FactTools/1.1.3/'
     '{particle_type}/{run_type}_{offset}/{runs}/'
     'fact-tools_{particle_type}_run_{run_id}'
@@ -27,7 +27,7 @@ fact_tools_images = (output_data_dir +
     '_Images.fits'
 )
 
-fact_tools_parameters = (output_data_dir +
+fact_tools_parameters = output_data_dir + (
     'ctapipe/0.8.0/'
     '{particle_type}/{run_type}_{offset}/{runs}/'
     'ctapipe_fact-tools_{particle_type}_run_{run_id}'
@@ -35,7 +35,7 @@ fact_tools_parameters = (output_data_dir +
     '.dl1.h5'
 )
 
-simtel_images = (output_data_dir +
+simtel_images = output_data_dir + (
     'simtel/'
     '{particle_type}/{run_type}_{offset}/{runs}/'
     'simtel_{particle_type}_run_{run_id}'
@@ -43,7 +43,7 @@ simtel_images = (output_data_dir +
     '.zst'
 )
 
-simtel_parameters = (output_data_dir +
+simtel_parameters = output_data_dir + (
     'ctapipe/0.8.0/'
     '{particle_type}/{run_type}_{offset}/{runs}/'
     'ctapipe_simtel_{particle_type}_run_{run_id}'
