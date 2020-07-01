@@ -2,7 +2,7 @@
 import pandas as pd
 from runlist import runlist, ceres_file, corsika_file, fact_tools_images, fact_tools_parameters, simtel_images, simtel_parameters
 
-runs = pd.read_csv('build/runlist.csv')
+runs = pd.read_csv('build/runlist.csv', dtype='str')
 
 
 rule all:
