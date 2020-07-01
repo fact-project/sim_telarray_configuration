@@ -1,8 +1,6 @@
 #!/bin/bash
 
-version=$(ctapipe-stage1-process --version)
-outdir="ctapipe-stage1/${version}/"
-mkdir -p ${outdir}
+source environment.sh
 
 infile=$1
 outfile=$2
