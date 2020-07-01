@@ -1,6 +1,8 @@
+# vim: ft=yaml
+import pandas as pd
 from runlist import runlist, ceres_file, corsika_file, fact_tools_images, fact_tools_parameters, simtel_images, simtel_parameters
 
-runs = runlist()
+runs = pd.read_csv('build/runlist.csv')
 
 
 rule all:
@@ -47,7 +49,7 @@ rule ctapipe_stage1_simtel:
 
 rule join_simtel:
     input:
-        [simtel_parameters.format(**row) for _, row in runs.iterrows() if row['run_type'] == 'wobble']
+        [simtel_parameters.format(**row) for _, row in runs.iterrows()]
     output:
         'build/simtel.hdf5'
     conda:
@@ -57,7 +59,7 @@ rule join_simtel:
 
 rule join_fact_tools:
     input:
-        [fact_tools_parameters.format(**row) for _, row in runs.iterrows() if row['run_type'] == 'wobble']
+        [fact_tools_parameters.format(**row) for _, row in runs.iterrows()]
     output:
         'build/fact_tools.hdf5'
     conda:
