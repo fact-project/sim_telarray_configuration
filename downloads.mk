@@ -2,7 +2,7 @@ OUTPUT_PATH='build'
 FACT_TOOLS_VERSION='v1.1.3'
 FACT_TOOLS=$(OUTPUT_PATH)/fact-tools-$(FACT_TOOLS_VERSION).jar
 
-all: $(FACT_TOOLS) $(addprefix $(OUTPUT_PATH), \
+all: $(FACT_TOOLS) $(addprefix $(OUTPUT_PATH)/, \
 	testMcDrsFile.drs.fits.gz \
 	delays_zero.csv \
 	)
