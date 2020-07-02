@@ -21,31 +21,34 @@ rule fact_tools:
 
 rule ctapipe_stage1_fact:
     input:
-        fact_tools_images
+        data=fact_tools_images,
+        script='run-ctapipe-stage1.sh'
     output:
         fact_tools_parameters
     conda:
         'envs/ctapipe.yaml'
     shell:
-        'bash run-ctapipe-stage1.sh {input} {output}'
+        'bash {input.script} {input.data} {output}'
 
 rule simtel:
     input:
-        corsika_file
+        data=corsika_file,
+        script='run-simtel.sh'
     output:
         simtel_images
     shell:
-        'bash run-simtel.sh {input} {output}'
+        'bash {input.script} {input.data} {output}'
 
 rule ctapipe_stage1_simtel:
     input:
-        simtel_images
+        data=simtel_images,
+        script='run-ctapipe-stage1.sh'
     output:
         simtel_parameters
     conda:
         'envs/ctapipe.yaml'
     shell:
-        'bash run-ctapipe-stage1.sh {input} {output}'
+        'bash {input.script} {input.data} {output}'
 
 rule join_simtel:
     input:

@@ -2,8 +2,9 @@ import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
 
-input_data_dir = '../data/'
-output_data_dir = 'build/'
+base_path = './'
+input_data_dir = base_path + '../data/'
+output_data_dir = base_path + 'build/'
 
 corsika_file = input_data_dir + (
     'corsika/76900/epos_urqmd_iact_lapalma_winter/'

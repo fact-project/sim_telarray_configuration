@@ -11,6 +11,7 @@ ctapipe-stage1-process \
     --overwrite \
     --output=${outfile}\
     --write-parameters \
+    --write-images \
     --progress
 
 rm provenance.log -f
