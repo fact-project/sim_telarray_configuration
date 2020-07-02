@@ -6,8 +6,8 @@ infile=$1
 outfile=$2
 
 java -jar ${fact_tools_jar} \
-    ${fact_tools_git_dir}/examples/save_dl1.xml \
+    scripts/save_dl1_mc.xml \
     --infile=file:${infile} \
-    --drsfile=file:${fact_tools_git_dir}/src/main/resources/testMcDrsFile.drs.fits.gz \
-    --pixelDelayFile=file:${fact_tools_git_dir}/src/main/resources/default/delays_zero.csv \
+    --drsfile=file:build/testMcDrsFile.drs.fits.gz \
+    --pixelDelayFile=file:build/delays_zero.csv \
     --outfile=file:${outfile}
