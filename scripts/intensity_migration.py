@@ -32,6 +32,8 @@ def main():
     )
     fig.colorbar(im, ax=ax, label='# events')
 
+    ax.plot([bin_min, bin_max], [bin_min, bin_max], 'g--')
+
     fig.savefig(str(snakemake.output))
 
 
