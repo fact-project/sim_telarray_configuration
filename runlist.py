@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
 
-base_path = './'
+base_path = ''
 input_data_dir = base_path + '../data/'
 output_data_dir = base_path + 'build/'
 
