@@ -18,9 +18,9 @@ def main():
     ax.set_ylabel('ceres')
     ax.set_aspect(1)
 
-    bin_max = 6
-    bin_min = 0
-    bin_step = 0.5
+    bin_max = 5
+    bin_min = 1
+    bin_step = 0.2
     n_bins = int((bin_max - bin_min) / bin_step)
     bins = np.linspace(bin_min, bin_max, n_bins + 1)
 
@@ -32,7 +32,7 @@ def main():
     )
     fig.colorbar(im, ax=ax, label='# events')
 
-    ax.plot([bin_min, bin_max], [bin_min, bin_max], 'g--')
+    ax.plot([bin_min, bin_max], [bin_min, bin_max], 'k--', alpha=0.5)
 
     fig.savefig(str(snakemake.output))
 
