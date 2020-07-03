@@ -17,6 +17,7 @@ ${simtel_binary} \
     -C telescope_theta="${CORSIKA_THETA:-0.0}" \
     -C telescope_phi="${CORSIKA_PHI:-0}" \
     -c config/FACT.cfg \
+    -C show=all \
     -h ${histfile} \
     -o ${outfile} \
     -i ${infile} \
