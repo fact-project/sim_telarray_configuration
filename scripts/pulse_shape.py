@@ -16,7 +16,7 @@ def main(output_path):
     x_max = 300
     x = linspace(x_min, x_max, n_px + 1)
 
-    df = pd.DataFrame({'x': x, 'pulse': pulse(x)})
+    df = pd.DataFrame({'x': x / 2, 'pulse': pulse(x)})
 
     df.to_csv(output_path, sep='\t', header=False, index=False)
 
