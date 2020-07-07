@@ -6,3 +6,4 @@ dependencies:
     - pip
     - pip:
         - git+https://github.com/nbiederbeck/ctapipe_io_fact@e68654c
+    - click
