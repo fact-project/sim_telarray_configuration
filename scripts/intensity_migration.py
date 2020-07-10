@@ -1,5 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
+from matplotlib.colors import LogNorm
 import pandas as pd
 
 
@@ -13,14 +14,14 @@ def main():
 
     fig, ax = plt.subplots()
 
-    ax.set_title('log10(intensity)')
+    ax.set_title(f'log10(intensity), {len(data.dropna())} Events')
     ax.set_xlabel('sim_telarray')
     ax.set_ylabel('ceres')
     ax.set_aspect(1)
 
     bin_max = 5
     bin_min = 1
-    bin_step = 0.2
+    bin_step = 0.1
     n_bins = int((bin_max - bin_min) / bin_step)
     bins = np.linspace(bin_min, bin_max, n_bins + 1)
 
@@ -29,6 +30,7 @@ def main():
         np.log10(intensity_ceres),
         bins=bins,
         cmin=1,
+        # norm=LogNorm(),
     )
     fig.colorbar(im, ax=ax, label='# events')
 
