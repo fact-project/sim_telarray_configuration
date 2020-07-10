@@ -5,8 +5,9 @@ source environment.sh
 infile=$1
 outfile=$2
 
+
 ctapipe-stage1-process \
-    --image-extractor-type='BaselineSubtractedNeighborPeakWindowSum' \
+    --image-extractor-type='NeighborPeakWindowSum' \
     --input=${infile}\
     --overwrite \
     --output=${outfile}\
@@ -14,4 +15,3 @@ ctapipe-stage1-process \
     --write-images \
     --progress
 
-rm provenance.log -f
