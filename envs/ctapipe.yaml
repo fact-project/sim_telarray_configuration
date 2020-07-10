@@ -3,7 +3,9 @@ channels:
     - cta-observatory
 dependencies:
     - ctapipe=0.8.0
-    - pip
+    - pip=20.0.2
     - pip:
         - git+https://github.com/nbiederbeck/ctapipe_io_fact@e68654c
-    - click
+        - git+https://github.com/fact-project/fact_plots@v0.12.2
+        - git+https://github.com/fact-project/irf@v0.5.1
+    - click=7.1.2
