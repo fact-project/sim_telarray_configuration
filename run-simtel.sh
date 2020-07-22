@@ -4,8 +4,8 @@ source environment.sh
 
 infile=$1
 outfile=$2
-logfile=${outfile}.log
-histfile=${outfile}.hdata
+logfile=${outfile/.zst/.log}
+histfile=${outfile/.zst/.hdata}
 
 for k in $(${SIM_TELARRAY_PATH}/bin/extract_corsika_tel --header-only --only-telescopes 1 "${infile}"); do
     export $k;
@@ -23,4 +23,4 @@ ${simtel_binary} \
     -h ${histfile} \
     -o ${outfile} \
     -i ${infile} \
-    2>&1 | zstd > ${logfile}
+    2>&1 > ${logfile}
