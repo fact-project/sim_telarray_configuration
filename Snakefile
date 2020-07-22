@@ -46,7 +46,7 @@ rule config_pulse_shape:
     input: 'scripts/pulse_shape.py'
     output: 'build/pulse_shape.dat'
     conda: 'envs/ctapipe.yaml'
-    shell: 'python {input.script}'
+    shell: 'python {input}'
 
 
 rule simtel:
