@@ -23,7 +23,7 @@ ceres_file = input_data_dir + (
 )
 
 fact_tools_images = output_data_dir + (
-    'FactTools/1.1.3/'
+    'fact_tools/1.1.3/'
     '{particle_type}/{run_type}_{offset}/{runs}/'
     'fact-tools_{particle_type}_run_{run_id}'
     '_az{az_min}-{az_max}_zd{zd_min}-{zd_max}'
